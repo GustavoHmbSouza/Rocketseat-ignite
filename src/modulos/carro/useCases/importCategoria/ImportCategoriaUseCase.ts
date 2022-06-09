@@ -17,7 +17,6 @@ class ImportCategoriaUseCase {
             const parseFile = parse();
 
             stream.pipe(parseFile);
-            console.log("teste");
 
             parseFile
                 .on("data", async (line) => {
@@ -25,6 +24,7 @@ class ImportCategoriaUseCase {
                     categorias.push({ nome, descricao });
                 })
                 .on("end", () => {
+                    fs.promises.unlink(file.path);
                     resolve(categorias);
                 })
                 .on("error", (err) => {
