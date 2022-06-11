@@ -8,6 +8,7 @@ class CreateCategoriaUseCase {
     constructor(private categoriasRepository: ICategoriasRepository) { }
 
     execute({ nome, descricao }: IRequest): void {
+        console.log("teste Create");
         const categoriaAlreadyExists =
             this.categoriasRepository.findByName(nome);
 
