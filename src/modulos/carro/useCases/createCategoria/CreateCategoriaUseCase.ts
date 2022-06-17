@@ -7,10 +7,9 @@ interface IRequest {
 class CreateCategoriaUseCase {
     constructor(private categoriasRepository: ICategoriasRepository) { }
 
-    execute({ nome, descricao }: IRequest): void {
-        console.log("teste Create");
+    async execute({ nome, descricao }: IRequest): Promise<void> {
         const categoriaAlreadyExists =
-            this.categoriasRepository.findByName(nome);
+            await this.categoriasRepository.findByName(nome);
 
         if (categoriaAlreadyExists) throw new Error("Categoria já existe!");
 
