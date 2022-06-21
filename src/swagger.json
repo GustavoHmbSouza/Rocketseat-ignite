@@ -76,6 +76,74 @@
                     }
                 }
             }
+        },
+        "/categorias/import": {
+            "post": {
+                "tags": [
+                    "Categoria"
+                ],
+                "summary": "Upload de categorias",
+                "description": "Upload de categorias",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/especificacoes": {
+            "post": {
+                "tags": [
+                    "Especificacoes"
+                ],
+                "summary": "Cria Especificação",
+                "description": "Cria uma nova Especificacao",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Especificacao"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Especificacao já existe"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Especificacao": {
+            "type": "object",
+            "properties": {
+                "nome": {
+                    "type": "string"
+                },
+                "descricao": {
+                    "type": "string"
+                }
+            }
         }
     }
 }

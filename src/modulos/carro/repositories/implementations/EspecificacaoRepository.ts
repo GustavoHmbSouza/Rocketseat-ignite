@@ -3,30 +3,23 @@ import {
     ICreateEspecificacaoDTO,
     IEspecificacaoRepository,
 } from "../IEspecificacaoRepository";
+import { getRepository, Repository } from "typeorm"
 
 class EspecificacaoRepository implements IEspecificacaoRepository {
-    private especificacoes: Especificacao[];
+    private repository: Repository<Especificacao>;
 
     constructor() {
-        this.especificacoes = [];
+        this.repository = getRepository(Especificacao)
     }
 
-    create({ nome, descricao }: ICreateEspecificacaoDTO): void {
-        const especificacao = new Especificacao();
+    async create({ nome, descricao }: ICreateEspecificacaoDTO): Promise<void> {
+        const especificacao = this.repository.create({ nome, descricao });
 
-        Object.assign(especificacao, {
-            nome,
-            descricao,
-            create_at: new Date(),
-        });
-
-        this.especificacoes.push(especificacao);
+        await this.repository.save(especificacao);
     }
 
-    findByName(nome: string): Especificacao {
-        const especificacao = this.especificacoes.find(
-            (especificacao) => especificacao.nome === nome
-        );
+    async findByName(nome: string): Promise<Especificacao> {
+        const especificacao = await this.repository.findOne({ nome })
 
         return especificacao;
     }
