@@ -5,7 +5,7 @@ import {
 } from "../IEspecificacaoRepository";
 import { getRepository, Repository } from "typeorm"
 
-class EspecificacaoRepository implements IEspecificacaoRepository {
+class EspecificacoesRepository implements IEspecificacaoRepository {
     private repository: Repository<Especificacao>;
 
     constructor() {
@@ -25,4 +25,4 @@ class EspecificacaoRepository implements IEspecificacaoRepository {
     }
 }
 
-export { EspecificacaoRepository };
+export { EspecificacoesRepository };

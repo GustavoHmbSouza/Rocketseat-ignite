@@ -3,7 +3,9 @@ import { container } from "tsyringe";
 import { ICategoriasRepository } from "../../modulos/carro/repositories/ICategoriasRepository";
 import { IEspecificacaoRepository } from "../../modulos/carro/repositories/IEspecificacaoRepository";
 import { CategoriasRepository } from "../../modulos/carro/repositories/implementations/CaregoriasRepository";
-import { EspecificacaoRepository } from "../../modulos/carro/repositories/implementations/EspecificacaoRepository";
+import { EspecificacoesRepository } from "../../modulos/carro/repositories/implementations/EspecificacoesRepository";
+import { UsuariosRepository } from "../../modulos/conta/repositories/Implementations/UsuariosRepository";
+import { IUsuarioRepository } from "../../modulos/conta/repositories/IUsuarioRepository";
 
 container.registerSingleton<ICategoriasRepository>(
     "CategoriasRepository",
@@ -11,6 +13,11 @@ container.registerSingleton<ICategoriasRepository>(
 );
 
 container.registerSingleton<IEspecificacaoRepository>(
-    "EspecificacaoRepository",
-    EspecificacaoRepository
+    "EspecificacoesRepository",
+    EspecificacoesRepository
+);
+
+container.registerSingleton<IUsuarioRepository>(
+    "UsuariosRepository",
+    UsuariosRepository
 );
