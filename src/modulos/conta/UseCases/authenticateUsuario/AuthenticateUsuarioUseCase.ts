@@ -27,13 +27,13 @@ class AuthenticateUsuarioUseCase {
         const usuario = await this.usuarioRepository.findByEmail(email);
 
         if (!usuario) {
-            throw new Error("Email ou senha incorretos");
+            throw new AppError("Email ou senha incorretos");
         }
 
         const senhaMatch = await compare(senha, usuario.senha);
 
         if (!senhaMatch) {
-            throw new Error("Email ou senha incorretos");
+            throw new AppError("Email ou senha incorretos");
         }
 
         const token = sign({}, "f757a38a55fb3894cda96a228e5e28f2", {
