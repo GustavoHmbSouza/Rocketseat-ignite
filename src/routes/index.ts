@@ -7,9 +7,9 @@ import { usuariosRoutes } from "./usuarios.rotas";
 
 const router = Router();
 
+router.use(authenticateRoutes);
 router.use("/categorias", categoriasRoutes);
 router.use("/especificacoes", especificacoesRoutes);
 router.use("/usuarios", usuariosRoutes);
-router.use(authenticateRoutes);
 
 export { router };
