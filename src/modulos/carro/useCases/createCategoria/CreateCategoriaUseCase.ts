@@ -1,3 +1,4 @@
+import { AppError } from "../../../../errors/AppError";
 import { inject, injectable } from "tsyringe";
 
 import { ICategoriasRepository } from "../../repositories/ICategoriasRepository";
