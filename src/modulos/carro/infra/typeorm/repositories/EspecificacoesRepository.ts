@@ -1,9 +1,9 @@
-import { Especificacao } from "../../entities/Especificacao";
 import {
     ICreateEspecificacaoDTO,
     IEspecificacaoRepository,
-} from "../IEspecificacaoRepository";
+} from "../../../repositories/IEspecificacaoRepository";
 import { getRepository, Repository } from "typeorm"
+import { Especificacao } from "../entities/Especificacao";
 
 class EspecificacoesRepository implements IEspecificacaoRepository {
     private repository: Repository<Especificacao>;
