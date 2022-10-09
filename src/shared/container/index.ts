@@ -6,6 +6,8 @@ import { CategoriasRepository } from "../../modulos/carro/infra/typeorm/reposito
 import { EspecificacoesRepository } from "../../modulos/carro/infra/typeorm/repositories/EspecificacoesRepository";
 import { UsuariosRepository } from "../../modulos/conta/infra/typeorm/repositories/UsuariosRepository";
 import { IUsuarioRepository } from "../../modulos/conta/repositories/IUsuarioRepository";
+import { ICarroRepository } from "../../modulos/carro/repositories/ICarroRepository";
+import { CarrosRepository } from "../../modulos/carro/infra/typeorm/repositories/CarrosRepository";
 
 container.registerSingleton<ICategoriasRepository>(
     "CategoriasRepository",
@@ -20,4 +22,9 @@ container.registerSingleton<IEspecificacaoRepository>(
 container.registerSingleton<IUsuarioRepository>(
     "UsuariosRepository",
     UsuariosRepository
+);
+
+container.registerSingleton<ICarroRepository>(
+    "CarrosRepository",
+    CarrosRepository
 );

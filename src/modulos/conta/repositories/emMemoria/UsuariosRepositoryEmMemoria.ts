@@ -1,5 +1,5 @@
 import { ICreateUsuarioDTO } from "../../dtos/ICreateUsuarioDTO";
-import { Usuario } from "../../entities/Usuario";
+import { Usuario } from "../../infra/typeorm/entities/Usuario";
 import { IUsuarioRepository } from "../IUsuarioRepository";
 
 class UsuariosRepositoryEmMemoria implements IUsuarioRepository {
