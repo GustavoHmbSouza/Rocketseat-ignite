@@ -8,9 +8,10 @@ import "../../container";
 import { router } from "./routes";
 import swaggerFile from "../../../swagger.json";
 
-import "../../infra/typeorm";
+import createConnection from "../../infra/typeorm";
 import { AppError } from "../../errors/AppError";
 
+createConnection();
 const app = express();
 
 app.use(express.json());
