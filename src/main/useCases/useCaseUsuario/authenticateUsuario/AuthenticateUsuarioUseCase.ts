@@ -2,7 +2,7 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
-import { IUsuarioRepository } from "../../repositories/IUsuarioRepository";
+import { IUsuarioRepository } from "../../../repositories/IUsuarioRepository";
 
 interface IRequest {
     email: string;
