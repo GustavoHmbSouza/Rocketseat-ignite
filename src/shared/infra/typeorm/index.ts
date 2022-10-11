@@ -7,3 +7,4 @@ export default async (host = "database"): Promise<Connection> => {
         host
     }));
 }
+

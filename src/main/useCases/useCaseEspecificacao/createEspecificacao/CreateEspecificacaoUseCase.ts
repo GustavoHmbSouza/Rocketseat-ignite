@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { IEspecificacaoRepository } from "../../repositories/IEspecificacaoRepository";
+import { AppError } from "../../../../shared/errors/AppError";
+import { IEspecificacaoRepository } from "../../../repositories/IEspecificacaoRepository";
 
 interface IRequest {
     nome: string;

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
-import { UsuariosRepository } from '../../../../modulos/conta/infra/typeorm/repositories/UsuariosRepository';
+import { UsuariosRepository } from '../../../../main/infra/typeorm/repositories/UsuariosRepository';
 import { AppError } from '../../../errors/AppError';
 
 interface IPayload {

@@ -1,5 +1,5 @@
 import { AppError } from "../../../../shared/errors/AppError";
-import { CategoriasRepositoryEmMemoria } from "../../repositories/emMemoria/CategoriasRepositoryEmMemoria";
+import { CategoriasRepositoryEmMemoria } from "../../../repositories/emMemoria/CategoriasRepositoryEmMemoria";
 import { CreateCategoriaUseCase } from "./CreateCategoriaUseCase";
 
 let categoriasRepositoryEmMemoria: CategoriasRepositoryEmMemoria;

@@ -5,7 +5,7 @@
     "password": "ignite",
     "database": "fundamentos",
     "entities": [
-        "./src/modulos/**/entities/*.ts"
+        "./src/main/**/entities/*.ts"
     ],
     "migrations": [
         "./src/shared/infra/typeorm/migrations/*.ts"

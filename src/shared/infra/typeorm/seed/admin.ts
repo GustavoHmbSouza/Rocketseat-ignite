@@ -12,6 +12,8 @@ async function create() {
         `INSERT INTO USUARIOS(id, nome, email, senha, "is_admin", created_at, licenca_direcao)
         values('${id}', 'admin', 'admin@admin.com', '${password}', true, 'now()', 'XXXX' )`
     )
+
+    await connection.close;
 }
 
 create().then(() => console.log('Usuario admin criado'))

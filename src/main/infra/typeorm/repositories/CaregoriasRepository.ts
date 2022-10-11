@@ -1,16 +1,16 @@
 import { getRepository, Repository } from "typeorm";
+import { ICategoriasRepository, ICreateCategoryDTO } from "../../../repositories/ICategoriasRepository";
 
-import {
-    ICategoriasRepository,
-    ICreateCategoryDTO,
-} from "../../../repositories/ICategoriasRepository";
+
 import { Categoria } from "../entities/Categoria";
 
 class CategoriasRepository implements ICategoriasRepository {
     private repository: Repository<Categoria>;
 
     constructor() {
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         this.repository = getRepository(Categoria);
+        console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBS")
     }
 
     async create({ nome, descricao }: ICreateCategoryDTO): Promise<void> {

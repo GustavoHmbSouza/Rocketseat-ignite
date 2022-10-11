@@ -3,8 +3,8 @@ import { Router } from "express";
 import uploadConfig from '../../../../config/upload';
 import multer from "multer";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import { CreateUsuarioController } from "../../../../modulos/conta/UseCases/createUsuario/CreateUsuarioController";
-import { UpdateUsuarioAvatarController } from "../../../../modulos/conta/UseCases/updateUsuarioAvatar/UpdateUsuarioAvatarController";
+import { CreateUsuarioController } from "../../../../main/useCases/useCaseUsuario/createUsuario/CreateUsuarioController";
+import { UpdateUsuarioAvatarController } from "../../../../main/useCases/useCaseUsuario/updateUsuarioAvatar/UpdateUsuarioAvatarController";
 
 const usuariosRoutes = Router();
 

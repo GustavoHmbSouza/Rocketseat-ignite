@@ -1,5 +1,5 @@
 import { AppError } from "../../../../shared/errors/AppError";
-import { CarroRepositoryEmMemoria } from "../../repositories/emMemoria/CarroRepositoryEmMemoria";
+import { CarroRepositoryEmMemoria } from "../../../repositories/emMemoria/CarroRepositoryEmMemoria";
 import { CreateCarroUseCase } from "./CreateCarroUseCase";
 
 let createCarroUseCase: CreateCarroUseCase;

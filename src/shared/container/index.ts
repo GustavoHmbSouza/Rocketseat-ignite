@@ -1,13 +1,12 @@
 import { container } from "tsyringe";
-
-import { ICategoriasRepository } from "../../modulos/carro/repositories/ICategoriasRepository";
-import { IEspecificacaoRepository } from "../../modulos/carro/repositories/IEspecificacaoRepository";
-import { CategoriasRepository } from "../../modulos/carro/infra/typeorm/repositories/CaregoriasRepository";
-import { EspecificacoesRepository } from "../../modulos/carro/infra/typeorm/repositories/EspecificacoesRepository";
-import { UsuariosRepository } from "../../modulos/conta/infra/typeorm/repositories/UsuariosRepository";
-import { IUsuarioRepository } from "../../modulos/conta/repositories/IUsuarioRepository";
-import { ICarroRepository } from "../../modulos/carro/repositories/ICarroRepository";
-import { CarrosRepository } from "../../modulos/carro/infra/typeorm/repositories/CarrosRepository";
+import { CategoriasRepository } from "../../main/infra/typeorm/repositories/CaregoriasRepository";
+import { CarrosRepository } from "../../main/infra/typeorm/repositories/CarrosRepository";
+import { EspecificacoesRepository } from "../../main/infra/typeorm/repositories/EspecificacoesRepository";
+import { UsuariosRepository } from "../../main/infra/typeorm/repositories/UsuariosRepository";
+import { ICarroRepository } from "../../main/repositories/ICarroRepository";
+import { ICategoriasRepository } from "../../main/repositories/ICategoriasRepository";
+import { IEspecificacaoRepository } from "../../main/repositories/IEspecificacaoRepository";
+import { IUsuarioRepository } from "../../main/repositories/IUsuarioRepository";
 
 container.registerSingleton<ICategoriasRepository>(
     "CategoriasRepository",
