@@ -36,6 +36,21 @@ class CarroRepositoryEmMemoria implements ICarroRepository {
     async findByPlaca(placa: string): Promise<Carro> {
         return this.carros.find(carro => carro.placa === placa);
     }
+
+    async findAvailable(placa?: string, categoria_id?: string, nome?: string): Promise<Carro[]> {
+        const carros = this.carros
+            .filter(carro => {
+                if (carro.available == true && (((placa && carro.placa === placa) ||
+                    (categoria_id && carro.categoria_id === categoria_id) ||
+                    (nome && carro.nome === nome)) || (!placa && !categoria_id && !nome))
+                ) {
+                    return carro
+                }
+                return null;
+            })
+
+        return carros;
+    }
 }
 
 export { CarroRepositoryEmMemoria }

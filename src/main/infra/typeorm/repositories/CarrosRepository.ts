@@ -36,12 +36,31 @@ class CarrosRepository implements ICarroRepository {
 
         return carro;
     }
+
     async findByPlaca(placa: string): Promise<Carro> {
         const carro = await this.repositoty.findOne({ placa });
 
         return carro;
     }
 
+    async findAvailable(placa?: string, categoria_id?: string, nome?: string): Promise<Carro[]> {
+        const carrosQuery = await this.repositoty
+            .createQueryBuilder("c")
+            .where("available= :available", { available: true });
+
+        if (placa)
+            carrosQuery.andWhere("c.placa= :placa", { placa })
+
+        if (nome)
+            carrosQuery.andWhere("c.nome= :nome", { nome })
+
+        if (categoria_id)
+            carrosQuery.andWhere("c.categoria_id= :categoria_id", { categoria_id })
+
+        const carros = await carrosQuery.getMany();
+
+        return carros;
+    }
 }
 
 export { CarrosRepository }

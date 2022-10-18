@@ -8,9 +8,7 @@ class CategoriasRepository implements ICategoriasRepository {
     private repository: Repository<Categoria>;
 
     constructor() {
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         this.repository = getRepository(Categoria);
-        console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBS")
     }
 
     async create({ nome, descricao }: ICreateCategoryDTO): Promise<void> {
