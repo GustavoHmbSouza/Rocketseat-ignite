@@ -9,14 +9,22 @@ class EspecificacoesRepository implements IEspecificacaoRepository {
         this.repository = getRepository(Especificacao)
     }
 
-    async create({ nome, descricao }: ICreateEspecificacaoDTO): Promise<void> {
+    async create({ nome, descricao }: ICreateEspecificacaoDTO): Promise<Especificacao> {
         const especificacao = this.repository.create({ nome, descricao });
 
         await this.repository.save(especificacao);
+
+        return especificacao;
     }
 
     async findByName(nome: string): Promise<Especificacao> {
         const especificacao = await this.repository.findOne({ nome })
+
+        return especificacao;
+    }
+
+    async findByIds(ids: string[]): Promise<Especificacao[]> {
+        const especificacao = await this.repository.findByIds(ids)
 
         return especificacao;
     }

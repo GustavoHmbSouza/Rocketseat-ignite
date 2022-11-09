@@ -1,3 +1,4 @@
+import { Especificacao } from "../infra/typeorm/entities/Especificacao";
 
 interface ICreateCarroDTO {
     nome: string;
@@ -7,6 +8,8 @@ interface ICreateCarroDTO {
     valor_multa: number;
     marca: string;
     categoria_id: string;
+    especificacoes?: Especificacao[];
+    id?: string;
 }
 
 export { ICreateCarroDTO }

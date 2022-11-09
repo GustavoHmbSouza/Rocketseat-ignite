@@ -67,6 +67,7 @@ export class CreateCarro1663722233561 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable("carros")
     }
 
 }

@@ -59,7 +59,7 @@ describe("Lista Carros", () => {
         expect(carros).toEqual([carro])
     })
 
-    it("Deve listar todos os carros disponíveis por nome", async () => {
+    it("Deve listar todos os carros disponíveis por categoria", async () => {
         const carro = await carrosRepositoryEmMemory.create({
             nome: "carro4",
             descricao: "Carro descricao",
@@ -74,5 +74,4 @@ describe("Lista Carros", () => {
 
         expect(carros).toEqual([carro])
     })
-
 })
