@@ -6,7 +6,7 @@ interface ICarroRepository {
     findByPlaca(placa: string): Promise<Carro>;
     findAvailable(placa?: string, categoria_id?: string, nome?: string): Promise<Carro[]>;
     findById(id: string): Promise<Carro>;
-
+    updateAvailable(id: string, available: boolean): Promise<void>;
 }
 
 export { ICarroRepository }

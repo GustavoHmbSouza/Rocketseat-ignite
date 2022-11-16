@@ -4,6 +4,7 @@ import { ICreateAluguelDTO } from "../../../dtos/ICreateAluguelDTO";
 import { Aluguel } from "../../../infra/typeorm/entities/Aluguel";
 import { IAlugueisRepository } from "../../../repositories/IAlugueisRepository";
 import { inject, injectable } from "tsyringe";
+import { ICarroRepository } from "../../../repositories/ICarroRepository";
 
 @injectable()
 class CreateAluguelUseCase {
@@ -13,7 +14,10 @@ class CreateAluguelUseCase {
         private alugueisRepository: IAlugueisRepository,
 
         @inject("DayjsDateProvider")
-        private dateProvider: IDateProvider
+        private dateProvider: IDateProvider,
+
+        @inject("CarrosRepository")
+        private carrosRepository: ICarroRepository
     ) { }
 
     async execute({ usuario_id, carro_id, tempo_previsto_retorno }: ICreateAluguelDTO): Promise<Aluguel> {
@@ -39,6 +43,8 @@ class CreateAluguelUseCase {
             carro_id,
             tempo_previsto_retorno
         });
+
+        await this.carrosRepository.updateAvailable(carro_id, false);
 
         return aluguel
     }

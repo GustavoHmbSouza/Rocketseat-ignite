@@ -2,10 +2,12 @@ import dayjs from "dayjs";
 import { DayjsDateProvider } from "../../../../shared/container/providers/DateProvider/implementacoes/DayjsDateProvider";
 import { AppError } from "../../../../shared/errors/AppError";
 import { AlugueisRepositoryEmMemoria } from "../../../repositories/emMemoria/AlugueisRepositoryEmMemoria";
+import { CarroRepositoryEmMemoria } from "../../../repositories/emMemoria/CarroRepositoryEmMemoria";
 import { CreateAluguelUseCase } from "./CreateAluguelUseCase";
 
 let createAluguelUseCase: CreateAluguelUseCase;
 let alugueisRepositoryInMemory: AlugueisRepositoryEmMemoria;
+let carroRepositoryEmMemoria: CarroRepositoryEmMemoria;
 let dayjsDateProvider: DayjsDateProvider;
 
 describe("Criando aluguel", () => {
@@ -14,8 +16,9 @@ describe("Criando aluguel", () => {
     beforeEach(() => {
         alugueisRepositoryInMemory = new AlugueisRepositoryEmMemoria()
         dayjsDateProvider = new DayjsDateProvider();
+        carroRepositoryEmMemoria = new CarroRepositoryEmMemoria();
 
-        createAluguelUseCase = new CreateAluguelUseCase(alugueisRepositoryInMemory, dayjsDateProvider);
+        createAluguelUseCase = new CreateAluguelUseCase(alugueisRepositoryInMemory, dayjsDateProvider, carroRepositoryEmMemoria);
     });
 
     it("Deve criar um novo aluguel", async () => {
