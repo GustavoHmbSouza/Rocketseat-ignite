@@ -5,7 +5,6 @@ import { container } from 'tsyringe';
 
 class CreateAluguelController {
     async handle(request: Request, response: Response): Promise<Response> {
-        console.log("AQUIIIII")
         const { carro_id, tempo_previsto_retorno } = request.body;
         const { id } = request.usuario;
 

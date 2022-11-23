@@ -24,6 +24,10 @@ class AlugueisRepositoryEmMemoria implements IAlugueisRepository {
 
         return aluguel;
     }
+
+    async findById(id: string): Promise<Aluguel> {
+        return this.alugueis.find(aluguel => aluguel.id === id)
+    }
 }
 
 export { AlugueisRepositoryEmMemoria }

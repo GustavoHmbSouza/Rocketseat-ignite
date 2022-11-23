@@ -6,6 +6,7 @@ interface IAlugueisRepository {
     findAluguelDisponivelParaCarro(carro_id: string): Promise<Aluguel>;
     findAluguelDisponivelParaUsuario(usuario_id: string): Promise<Aluguel>;
     create(data: ICreateAluguelDTO): Promise<Aluguel>;
+    findById(id: string): Promise<Aluguel>;
 }
 
 export { IAlugueisRepository }

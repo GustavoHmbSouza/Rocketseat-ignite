@@ -17,8 +17,15 @@ class DayjsDateProvider implements IDateProvider {
         return dayjs(data).utc().local().format();
     }
 
-    dateNow() {
+    dateNow(): Date {
         return dayjs().toDate();
+    }
+
+    compareEmDias(tempo_inicial: Date, tempo_final: Date): number {
+        const tempo_final_utc = this.converteParaUtc(tempo_final);
+        const tempo_incial_utc = this.converteParaUtc(tempo_inicial);
+
+        return dayjs(tempo_final_utc).diff(tempo_incial_utc, "days");
     }
 }
 

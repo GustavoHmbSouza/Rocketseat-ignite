@@ -7,10 +7,6 @@ class ListAvailableCarrosController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { placa, nome, categoria_id } = request.query;
 
-        console.log(placa);
-        console.log(nome);
-        console.log(categoria_id);
-
         const listAvailableCarrosUseCase = container.resolve(ListAvailableCarrosUseCase);
 
         const carros = await listAvailableCarrosUseCase.execute(

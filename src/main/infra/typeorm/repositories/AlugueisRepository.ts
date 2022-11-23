@@ -12,26 +12,36 @@ class AlugueisRepository implements IAlugueisRepository {
     }
 
     async findAluguelDisponivelParaCarro(carro_id: string): Promise<Aluguel> {
-        const aluguel = await this.repository.findOne({ carro_id });
+        const aluguel = await this.repository.findOne({ where: { carro_id, tempo_final: null } });
 
         return aluguel;
     }
+
     async findAluguelDisponivelParaUsuario(usuario_id: string): Promise<Aluguel> {
-        const aluguel = await this.repository.findOne({ usuario_id });
+        const aluguel = await this.repository.findOne({ where: { usuario_id, tempo_final: null } });
 
         return aluguel;
     }
-    async create({ carro_id, usuario_id, tempo_previsto_retorno }: ICreateAluguelDTO): Promise<Aluguel> {
+
+    async create({ carro_id, usuario_id, tempo_previsto_retorno, id, tempo_final, total }: ICreateAluguelDTO): Promise<Aluguel> {
         const aluguel = this.repository.create({
             carro_id,
             usuario_id,
-            tempo_previsto_retorno
+            tempo_previsto_retorno,
+            id,
+            tempo_final,
+            total
         });
         await this.repository.save(aluguel);
 
         return aluguel;
     }
 
+    async findById(id: string): Promise<Aluguel> {
+        const aluguel = await this.repository.findOne(id);
+
+        return aluguel;
+    }
 }
 
 export { AlugueisRepository }
