@@ -25,15 +25,15 @@ describe("Criar categoria", () => {
     });
 
     it("Não deve criar uma nova categoria por já existir uma", async () => {
-        expect(async () => {
-            const categoria = {
-                nome: "Categoria Teste",
-                descricao: "Descricao da categoria de teste"
-            };
+        const categoria = {
+            nome: "Categoria Teste",
+            descricao: "Descricao da categoria de teste"
+        };
 
-            await createCategoriaUseCase.execute(categoria);
+        await createCategoriaUseCase.execute(categoria);
 
-            await createCategoriaUseCase.execute(categoria);
-        }).rejects.toBeInstanceOf(AppError);
+        await expect(
+            createCategoriaUseCase.execute(categoria)
+        ).rejects.toEqual(new AppError("Categoria já existe!"));
     });
 })

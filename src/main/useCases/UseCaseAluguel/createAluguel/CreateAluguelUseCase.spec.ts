@@ -22,9 +22,19 @@ describe("Criando aluguel", () => {
     });
 
     it("Deve criar um novo aluguel", async () => {
+        const carro = await carroRepositoryEmMemoria.create({
+            nome: "teste",
+            descricao: "testee",
+            dia_rate: 100,
+            placa: "teste",
+            valor_multa: 40,
+            categoria_id: "1234",
+            marca: "marca"
+        });
+
         const aluguel = await createAluguelUseCase.execute({
             usuario_id: "12345",
-            carro_id: "121212",
+            carro_id: carro.id,
             tempo_previsto_retorno: diaAdd24Horas
         })
 
@@ -35,15 +45,25 @@ describe("Criando aluguel", () => {
 
     it("Não deve criar um novo aluguel se já existir um em aberto para o mesmo usuário", async () => {
         expect(async () => {
+            const carro = await carroRepositoryEmMemoria.create({
+                nome: "teste",
+                descricao: "testee",
+                dia_rate: 100,
+                placa: "teste",
+                valor_multa: 40,
+                categoria_id: "1234",
+                marca: "marca"
+            });
+
             await createAluguelUseCase.execute({
                 usuario_id: "12345",
-                carro_id: "123",
+                carro_id: carro.id,
                 tempo_previsto_retorno: diaAdd24Horas
             })
 
             await createAluguelUseCase.execute({
                 usuario_id: "12345",
-                carro_id: "321",
+                carro_id: carro.id,
                 tempo_previsto_retorno: diaAdd24Horas
             })
         }).rejects.toBeInstanceOf(AppError);
@@ -52,15 +72,25 @@ describe("Criando aluguel", () => {
 
     it("Não deve criar um novo aluguel se já existir um em aberto para o mesmo carro", async () => {
         expect(async () => {
+            const carro = await carroRepositoryEmMemoria.create({
+                nome: "teste",
+                descricao: "testee",
+                dia_rate: 100,
+                placa: "teste",
+                valor_multa: 40,
+                categoria_id: "1234",
+                marca: "marca"
+            });
+
             await createAluguelUseCase.execute({
                 usuario_id: "123",
-                carro_id: "test",
+                carro_id: carro.id,
                 tempo_previsto_retorno: diaAdd24Horas
             })
 
             await createAluguelUseCase.execute({
                 usuario_id: "321",
-                carro_id: "test",
+                carro_id: carro.id,
                 tempo_previsto_retorno: diaAdd24Horas
             })
         }).rejects.toBeInstanceOf(AppError);
@@ -68,9 +98,19 @@ describe("Criando aluguel", () => {
 
     it("Não deve criar um novo aluguel se o tempo de locação for menor que 24 horas", async () => {
         expect(async () => {
+            const carro = await carroRepositoryEmMemoria.create({
+                nome: "teste",
+                descricao: "testee",
+                dia_rate: 100,
+                placa: "teste",
+                valor_multa: 40,
+                categoria_id: "1234",
+                marca: "marca"
+            });
+
             await createAluguelUseCase.execute({
                 usuario_id: "123",
-                carro_id: "test",
+                carro_id: carro.id,
                 tempo_previsto_retorno: dayjs().toDate()
             })
 

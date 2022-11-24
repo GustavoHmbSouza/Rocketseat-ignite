@@ -28,6 +28,10 @@ class AlugueisRepositoryEmMemoria implements IAlugueisRepository {
     async findById(id: string): Promise<Aluguel> {
         return this.alugueis.find(aluguel => aluguel.id === id)
     }
+
+    async findByUsuario(usuario_id: string): Promise<Aluguel[]> {
+        return this.alugueis.filter(aluguel => aluguel.usuario_id === usuario_id)
+    }
 }
 
 export { AlugueisRepositoryEmMemoria }
