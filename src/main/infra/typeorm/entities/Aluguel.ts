@@ -1,11 +1,16 @@
-import { Column, CreateDateColumn, Entity, UpdateDateColumn, JoinTable, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, UpdateDateColumn, JoinTable, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid'
+import { Carro } from './Carro';
 
 @Entity("alugueis")
 class Aluguel {
 
     @PrimaryColumn()
     id: string;
+
+    @ManyToOne(() => Carro)
+    @JoinColumn({ name: "carro_id" })
+    carro: Carro;
 
     @Column()
     carro_id: string;

@@ -42,6 +42,12 @@ class AlugueisRepository implements IAlugueisRepository {
 
         return aluguel;
     }
+
+    async findByUsuario(usuario_id: string): Promise<Aluguel[]> {
+        const algueis = await this.repository.find({ where: { usuario_id }, relations: ["carro"] });
+
+        return algueis;
+    }
 }
 
 export { AlugueisRepository }
