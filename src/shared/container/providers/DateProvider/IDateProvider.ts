@@ -5,6 +5,7 @@ interface IDateProvider {
     converteParaUtc(data: Date): string;
     dateNow(): Date;
     compareEmDias(tempo_inicial: Date, tempo_final: Date): number;
+    addDays(days: number): Date;
 }
 
 export { IDateProvider };

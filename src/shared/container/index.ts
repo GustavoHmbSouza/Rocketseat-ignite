@@ -12,6 +12,8 @@ import { ICarroRepository } from "../../main/repositories/ICarroRepository";
 import { ICategoriasRepository } from "../../main/repositories/ICategoriasRepository";
 import { IEspecificacaoRepository } from "../../main/repositories/IEspecificacaoRepository";
 import { IUsuarioRepository } from "../../main/repositories/IUsuarioRepository";
+import { UsuariosTokensRepository } from "../../main/infra/typeorm/repositories/UsuariosTokensRepository";
+import { IUsuariosTokensRepository } from "../../main/repositories/IUsuariosTokensRepository";
 
 container.registerSingleton<ICategoriasRepository>(
     "CategoriasRepository",
@@ -41,4 +43,9 @@ container.registerSingleton<ICarroImagemRepository>(
 container.registerSingleton<IAlugueisRepository>(
     "AlugueisRepository",
     AlugueisRepository
+);
+
+container.registerSingleton<IUsuariosTokensRepository>(
+    "UsuariosTokensRepository",
+    UsuariosTokensRepository
 );
