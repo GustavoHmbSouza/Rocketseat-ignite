@@ -30,7 +30,6 @@ class AuthenticateUsuarioUseCase {
         @inject("UsuariosTokensRepository")
         private usuariosTokensRepository: UsuariosTokensRepository,
 
-
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider
     ) { }

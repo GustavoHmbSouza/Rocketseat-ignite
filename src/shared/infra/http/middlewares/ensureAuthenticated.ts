@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
+import auth from '../../../../config/auth';
 import { UsuariosRepository } from '../../../../main/infra/typeorm/repositories/UsuariosRepository';
+import { UsuariosTokensRepository } from '../../../../main/infra/typeorm/repositories/UsuariosTokensRepository';
 import { AppError } from '../../../errors/AppError';
 
 interface IPayload {
@@ -8,6 +10,7 @@ interface IPayload {
 }
 export async function ensureAuthenticated(request: Request, response: Response, next: NextFunction) {
     const authHeader = request.headers.authorization;
+    const usuariosTokensRepository = new UsuariosTokensRepository;
 
     if (!authHeader)
         throw new AppError("Token não existe", 401);
@@ -15,12 +18,10 @@ export async function ensureAuthenticated(request: Request, response: Response, 
     const [, token] = authHeader.split(" ");
 
     try {
-        const { sub: user_id } = verify(token, "f757a38a55fb3894cda96a228e5e28f2") as IPayload;
+        const { sub: user_id } = verify(token, auth.secret_refresh_token) as IPayload;
 
-        const usuariosRepository = new UsuariosRepository();
-
-        const usuario = usuariosRepository.findById(user_id);
-
+        const usuario = await usuariosTokensRepository.findByUsuarioAndRefreshToken(user_id, token);
+        console.log(usuario);
         if (!usuario)
             throw new AppError("Usuario não existe", 401)
 
