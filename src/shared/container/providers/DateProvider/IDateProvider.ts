@@ -6,6 +6,8 @@ interface IDateProvider {
     dateNow(): Date;
     compareEmDias(tempo_inicial: Date, tempo_final: Date): number;
     addDays(days: number): Date;
+    addHours(hours: number): Date;
+
 }
 
 export { IDateProvider };

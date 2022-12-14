@@ -6,6 +6,7 @@ dayjs.extend(utc);
 
 class DayjsDateProvider implements IDateProvider {
 
+
     comparacaoHoras(tempo_final: Date): number {
         const tempo_final_utc = this.converteParaUtc(tempo_final);
         const tempo_incial_utc = this.converteParaUtc(this.dateNow());
@@ -30,6 +31,10 @@ class DayjsDateProvider implements IDateProvider {
 
     addDays(days: number) {
         return dayjs().add(days, "days").toDate();
+    }
+
+    addHours(hours: number): Date {
+        return dayjs().add(hours, "days").toDate();
     }
 }
 
