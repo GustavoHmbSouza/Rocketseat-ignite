@@ -21,7 +21,12 @@
         "prettier"
     ],
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "off"
+            }
+        ],
         "camelcase": "off",
         "import/no-unresolved": "error",
         "@typescript-eslint/naming-convention": [
@@ -52,7 +57,7 @@
             }
         ],
         "import-helpers/order-imports": [
-            "warn",
+            0,
             {
                 "newlinesBetween": "always",
                 "groups": [
@@ -77,8 +82,7 @@
                     "**/*.spec.js"
                 ]
             }
-        ],
-        "endOfLine": "auto"
+        ]
     },
     "settings": {
         "import/resolver": {

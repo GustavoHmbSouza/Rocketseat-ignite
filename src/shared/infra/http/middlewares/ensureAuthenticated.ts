@@ -21,7 +21,6 @@ export async function ensureAuthenticated(request: Request, response: Response, 
         const { sub: user_id } = verify(token, auth.secret_refresh_token) as IPayload;
 
         const usuario = await usuariosTokensRepository.findByUsuarioAndRefreshToken(user_id, token);
-        console.log(usuario);
         if (!usuario)
             throw new AppError("Usuario não existe", 401)
 

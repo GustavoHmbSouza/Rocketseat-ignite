@@ -1,12 +1,12 @@
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
-import { UsuariosTokensRepository } from "../../../infra/typeorm/repositories/UsuariosTokensRepository";
 import { IUsuarioRepository } from "../../../repositories/IUsuarioRepository";
 import { v4 as uuidV4 } from 'uuid';
 import { IDateProvider } from "../../../../shared/container/providers/DateProvider/IDateProvider";
 import { IMailProvider } from "../../../../shared/container/providers/MailProvider/IMailProvider";
 import { resolve } from "path";
 import { useContainer } from "typeorm";
+import { IUsuariosTokensRepository } from "../../../repositories/IUsuariosTokensRepository";
 
 @injectable()
 class EnviarEmailSenhaPerdidaUseCase {
@@ -15,7 +15,7 @@ class EnviarEmailSenhaPerdidaUseCase {
         private usuarioRepository: IUsuarioRepository,
 
         @inject("UsuariosTokensRepository")
-        private usuariosTokensRepository: UsuariosTokensRepository,
+        private usuariosTokensRepository: IUsuariosTokensRepository,
 
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider,
@@ -31,6 +31,7 @@ class EnviarEmailSenhaPerdidaUseCase {
 
         if (!usuario)
             throw new AppError("Usuario não existe")
+
 
         const token = uuidV4();
 

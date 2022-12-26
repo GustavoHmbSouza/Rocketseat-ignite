@@ -1,11 +1,11 @@
+import { inject, injectable } from "tsyringe";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
-import { inject, injectable } from "tsyringe";
 import auth from "../../../../config/auth";
 import { IDateProvider } from "../../../../shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "../../../../shared/errors/AppError";
-import { UsuariosTokensRepository } from "../../../infra/typeorm/repositories/UsuariosTokensRepository";
 import { IUsuarioRepository } from "../../../repositories/IUsuarioRepository";
+import { IUsuariosTokensRepository } from "../../../repositories/IUsuariosTokensRepository";
 
 interface IRequest {
     email: string;
@@ -28,7 +28,7 @@ class AuthenticateUsuarioUseCase {
         private usuarioRepository: IUsuarioRepository,
 
         @inject("UsuariosTokensRepository")
-        private usuariosTokensRepository: UsuariosTokensRepository,
+        private usuariosTokensRepository: IUsuariosTokensRepository,
 
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider

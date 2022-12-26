@@ -8,6 +8,8 @@ interface IUsuariosTokensRepository {
     findByUsuarioAndRefreshToken(usuario_id: string, refresh_token: string): Promise<UsuariosTokens>
 
     deleteById(id: string): Promise<void>
+
+    findByRefreshToken(refresh_token: string): Promise<UsuariosTokens>
 }
 
 export { IUsuariosTokensRepository }

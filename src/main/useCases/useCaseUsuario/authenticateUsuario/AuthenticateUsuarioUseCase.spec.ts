@@ -1,17 +1,24 @@
 import { AppError } from "../../../../shared/errors/AppError";
-import { ICreateUsuarioDTO } from "../../../dtos/ICreateUsuarioDTO";
 import { UsuariosRepositoryEmMemoria } from "../../../repositories/emMemoria/UsuariosRepositoryEmMemoria";
-import { CreateUsuarioUseCase } from "../createUsuario/CreateUsuarioUseCase";
+import { UsuariosTokensRepositoryEmMemoria } from "../../../repositories/emMemoria/UsuariosTokensRepositoryEmMemoria";
+import { ICreateUsuarioDTO } from "../../../dtos/ICreateUsuarioDTO";
 import { AuthenticateUsuarioUseCase } from "./AuthenticateUsuarioUseCase";
+import { CreateUsuarioUseCase } from "../createUsuario/CreateUsuarioUseCase";
+import { DayjsDateProvider } from "../../../../shared/container/providers/DateProvider/implementacoes/DayjsDateProvider";
 
-let authenticateUsuarioUseCase: AuthenticateUsuarioUseCase;
+
 let usuariosRepositoryEmMemoria: UsuariosRepositoryEmMemoria;
+let usuariosTokensRepositoryEmMemoria: UsuariosTokensRepositoryEmMemoria;
+let authenticateUsuarioUseCase: AuthenticateUsuarioUseCase;
 let createUsuarioUseCase: CreateUsuarioUseCase;
+let dateProvider: DayjsDateProvider;
 
 describe("Autenticacao do Usuario", () => {
     beforeEach(() => {
         usuariosRepositoryEmMemoria = new UsuariosRepositoryEmMemoria();
-        authenticateUsuarioUseCase = new AuthenticateUsuarioUseCase(usuariosRepositoryEmMemoria);
+        usuariosTokensRepositoryEmMemoria = new UsuariosTokensRepositoryEmMemoria();
+        dateProvider = new DayjsDateProvider();
+        authenticateUsuarioUseCase = new AuthenticateUsuarioUseCase(usuariosRepositoryEmMemoria, usuariosTokensRepositoryEmMemoria, dateProvider);
         createUsuarioUseCase = new CreateUsuarioUseCase(usuariosRepositoryEmMemoria);
     })
 
